@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ArmRotation : MonoBehaviour {
 
+	public RopeScale scaleScript;
+
 	void Update() {
-		if(Input.GetMouseButton(0)) {
+		if(Input.GetMouseButton(0) && !scaleScript.isScaling) {
 			// convert mouse position into world coordinates
 			Vector3 mouseScreenPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			Vector3 difference = mouseScreenPosition - transform.position;
