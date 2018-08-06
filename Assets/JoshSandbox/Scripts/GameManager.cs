@@ -17,7 +17,12 @@ public class GameManager : MonoBehaviour {
 	private int score = 0;
 
 	void Awake() {
-		instance = this;
+		if (instance == null) {
+            instance = this;
+		} else if (instance != this) {
+            Destroy(gameObject);
+		}
+		DontDestroyOnLoad(gameObject);
 	}
 
 	void Start() {	
@@ -47,5 +52,15 @@ public class GameManager : MonoBehaviour {
 
 	public void OnEndGameButtonClicked() {
 		SceneManager.LoadScene("JoshScene");
+		ResetGame();
+	}
+
+	void ResetGame() {
+		gameOver = false;
+		scoreText.text = "Score: 0";
+		score = 0;
+		gameCanvas.SetActive(true);
+		endGameCanvas.SetActive(false);
+		StartCoroutine(UpdateScore());
 	}
 }
