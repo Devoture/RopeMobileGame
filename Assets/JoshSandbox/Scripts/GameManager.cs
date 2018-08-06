@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
 	public static GameManager Instance { get { return instance; }}
 	public Text scoreText;
+	public Text endGameScoreText;
+	public GameObject gameCanvas;
+	public GameObject endGameCanvas;
 	private bool gameOver;
 
 	private static GameManager instance;
@@ -18,6 +22,7 @@ public class GameManager : MonoBehaviour {
 
 	void Start() {	
 		StartCoroutine(UpdateScore());
+		gameCanvas.SetActive(true);
 	}
 
 	IEnumerator UpdateScore() {
@@ -34,7 +39,13 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void GameOver() {
+		gameCanvas.SetActive(false);
+		endGameCanvas.SetActive(true);
+		endGameScoreText.text = "Score: " + score.ToString();
 		gameOver = true;
-		Debug.Log("Game Over");
+	}
+
+	public void OnEndGameButtonClicked() {
+		SceneManager.LoadScene("JoshScene");
 	}
 }
