@@ -13,7 +13,7 @@ public class SpawnPlatform : MonoBehaviour {
 
 	public void Spawn() {
 		Vector3 pos = Vector3.zero;
-		pos = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(platformSize, Screen.width - platformSize), (Screen.height * 0.75f), Camera.main.farClipPlane * 0.5f));
+		pos = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(platformSize, Screen.width - platformSize), (Screen.height * 0.75f), 10));
 		Instantiate(platformPrefab, pos, Quaternion.identity);
 	}
 }
