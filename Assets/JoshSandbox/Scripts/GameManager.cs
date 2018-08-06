@@ -26,17 +26,22 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Start() {	
-		StartCoroutine(UpdateScore());
+		//StartCoroutine(UpdateScore());
 		gameCanvas.SetActive(true);
 	}
 
-	IEnumerator UpdateScore() {
-		yield return new WaitForSeconds(1);
-		if(!gameOver) {
-			score += 10;
-			UpdateHUD();
-			StartCoroutine(UpdateScore());
-		}
+	// IEnumerator UpdateScore() {
+	// 	yield return new WaitForSeconds(1);
+	// 	if(!gameOver) {
+	// 		score += 10;
+	// 		UpdateHUD();
+	// 		StartCoroutine(UpdateScore());
+	// 	}
+	// }
+
+	public void UpdateScore() {
+		score += 10;
+		UpdateHUD();
 	}
 
 	void UpdateHUD() {
@@ -61,6 +66,6 @@ public class GameManager : MonoBehaviour {
 		score = 0;
 		gameCanvas.SetActive(true);
 		endGameCanvas.SetActive(false);
-		StartCoroutine(UpdateScore());
+		//StartCoroutine(UpdateScore());
 	}
 }

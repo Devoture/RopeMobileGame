@@ -18,10 +18,12 @@ public class RopeCollision : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		if(other.gameObject.tag == "Platform") {
 			ropeScale.ResetRope();
+			GameManager.Instance.UpdateScore();
 			tmpPos.y = other.transform.position.y + player.GetComponent<BoxCollider2D>().bounds.size.y;
 			tmpPos.x = other.transform.position.x;
 			player.transform.position = tmpPos;
 			Camera.main.transform.position = new Vector3(0, player.position.y - cameraYOffset, Camera.main.transform.position.z);
+			other.gameObject.tag = "Untagged";
 			platformScript.Spawn();
 		}
 	}
