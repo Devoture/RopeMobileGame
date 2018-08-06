@@ -11,7 +11,7 @@ public class Lava : MonoBehaviour {
 	void Update() {
 		if(speed < maxSpeed) {
 			speed += Time.deltaTime * acceleration;
-		} 
+		}
 		if(speed > maxSpeed) {
 			speed = maxSpeed;
 		}
