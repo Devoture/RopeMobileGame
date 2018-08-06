@@ -10,6 +10,7 @@ public class RopeScale : MonoBehaviour {
 
 	private bool canScale;
 	private Vector3 originalScale;
+	private IEnumerator coroutine;
 
 	void Start() {
 		originalScale = transform.localScale;
@@ -17,7 +18,8 @@ public class RopeScale : MonoBehaviour {
 
 	void Update() {
 		if(Input.GetMouseButtonUp(0) && !isScaling) {
-			StartCoroutine(ScaleRope(scaleTimer));
+			coroutine = ScaleRope(scaleTimer);
+			StartCoroutine(coroutine);
 		}
 
 		if(canScale) {
@@ -29,8 +31,13 @@ public class RopeScale : MonoBehaviour {
 		isScaling = true;
 		canScale = true;
 		yield return new WaitForSeconds(waitTime);
-		transform.localScale = originalScale;
+		ResetRope();
+	}
+
+	public void ResetRope() {
+		StopCoroutine(coroutine);
 		canScale = false;
 		isScaling = false;
+		transform.localScale = originalScale;
 	}
 }
