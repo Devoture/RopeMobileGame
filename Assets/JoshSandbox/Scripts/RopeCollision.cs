@@ -24,6 +24,7 @@ public class RopeCollision : MonoBehaviour {
 			player.transform.position = tmpPos;
 			Camera.main.transform.position = new Vector3(0, player.position.y - cameraYOffset, Camera.main.transform.position.z);
 			other.gameObject.tag = "Untagged";
+			transform.root.parent = other.transform;
 			platformScript.Spawn();
 		}
 	}
