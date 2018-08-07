@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void OnEndGameButtonClicked() {
-		SceneManager.LoadScene("JoshScene");
+		SceneManager.LoadScene("Main");
 		ResetGame();
 	}
 
