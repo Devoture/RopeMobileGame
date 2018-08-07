@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Platform
   - Saw
+  - Jrc
   layers:
   - Default
   - TransparentFX

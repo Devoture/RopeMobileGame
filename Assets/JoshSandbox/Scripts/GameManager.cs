@@ -11,10 +11,12 @@ public class GameManager : MonoBehaviour {
 	public Text endGameScoreText;
 	public GameObject gameCanvas;
 	public GameObject endGameCanvas;
-	private bool gameOver;
+	public GameObject lava;
 
+	private bool gameOver;
 	private static GameManager instance;
 	private int score = 0;
+	private Vector2 lavaStartPos;
 
 	void Awake() {
 		if (instance == null) {
@@ -23,21 +25,12 @@ public class GameManager : MonoBehaviour {
             Destroy(gameObject);
 		}
 		DontDestroyOnLoad(gameObject);
+		lavaStartPos = lava.transform.position;
 	}
 
 	void Start() {	
-		//StartCoroutine(UpdateScore());
 		gameCanvas.SetActive(true);
 	}
-
-	// IEnumerator UpdateScore() {
-	// 	yield return new WaitForSeconds(1);
-	// 	if(!gameOver) {
-	// 		score += 10;
-	// 		UpdateHUD();
-	// 		StartCoroutine(UpdateScore());
-	// 	}
-	// }
 
 	public void UpdateScore() {
 		score += 10;
@@ -49,10 +42,12 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void GameOver() {
-		gameCanvas.SetActive(false);
-		endGameCanvas.SetActive(true);
-		endGameScoreText.text = "Score: " + score.ToString();
-		gameOver = true;
+		if(!(scoreText.text == "  JRC: POOP")) {
+			gameCanvas.SetActive(false);
+			endGameCanvas.SetActive(true);
+			endGameScoreText.text = "Score: " + score.ToString();
+			gameOver = true;
+		}
 	}
 
 	public void OnEndGameButtonClicked() {
@@ -66,6 +61,13 @@ public class GameManager : MonoBehaviour {
 		score = 0;
 		gameCanvas.SetActive(true);
 		endGameCanvas.SetActive(false);
-		//StartCoroutine(UpdateScore());
+		lava.SetActive(true);
+		lava.transform.position = lavaStartPos;
+		lava.GetComponent<Lava>().ResetSpeed();
+	}
+
+	public void Jrc() {
+		lava.SetActive(false);
+		scoreText.text = "  JRC: POOP";
 	}
 }

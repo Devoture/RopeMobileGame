@@ -31,5 +31,9 @@ public class RopeCollision : MonoBehaviour {
 		if(other.gameObject.tag == "Saw") {
 			ropeScale.ResetRope();
 		}
+
+		if(other.gameObject.tag == "Jrc") {
+			GameManager.Instance.Jrc();
+		}
 	}
 }

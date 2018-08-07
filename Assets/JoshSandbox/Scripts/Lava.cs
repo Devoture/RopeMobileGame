@@ -8,6 +8,12 @@ public class Lava : MonoBehaviour {
 	public float acceleration = 1.0f;
 	public float maxSpeed;
 
+	private float startSpeed;
+
+	void Start() {
+		startSpeed = speed;
+	}
+
 	void Update() {
 		if(speed < maxSpeed) {
 			speed += Time.deltaTime * acceleration;
@@ -16,6 +22,10 @@ public class Lava : MonoBehaviour {
 			speed = maxSpeed;
 		}
 		transform.Translate(Vector2.up * speed);
+	}
+
+	public void ResetSpeed() {
+		speed = startSpeed;
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
