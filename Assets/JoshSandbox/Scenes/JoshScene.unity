@@ -292,6 +292,7 @@ MonoBehaviour:
   platformPrefabs:
   - {fileID: 1067582139633262, guid: b443a7eb216d8024dab0c9e55a2991c0, type: 2}
   - {fileID: 1067582139633262, guid: 56c1a1bbdbca13842b68316fa1cc7a9f, type: 2}
+  - {fileID: 1067582139633262, guid: 70a478a46ef6b254ba1cb8baf39b5a92, type: 2}
 --- !u!81 &1323167340
 AudioListener:
   m_ObjectHideFlags: 0

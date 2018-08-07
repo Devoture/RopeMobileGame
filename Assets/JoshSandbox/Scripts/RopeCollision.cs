@@ -27,5 +27,9 @@ public class RopeCollision : MonoBehaviour {
 			other.gameObject.tag = "Untagged";
 			platformScript.Spawn();
 		}
+
+		if(other.gameObject.tag == "Saw") {
+			ropeScale.ResetRope();
+		}
 	}
 }
