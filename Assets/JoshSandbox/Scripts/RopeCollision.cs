@@ -32,7 +32,7 @@ public class RopeCollision : MonoBehaviour {
 			ropeScale.ResetRope();
 		}
 
-		if(other.gameObject.tag == "Jrc") {
+		if(other.gameObject.tag == "Jrc" && player.parent.name == "SawPlatform(Clone)") {
 			GameManager.Instance.Jrc();
 		}
 	}

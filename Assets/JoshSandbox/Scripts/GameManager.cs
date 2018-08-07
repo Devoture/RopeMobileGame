@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
 	private static GameManager instance;
 	private int score = 0;
 	private Vector2 lavaStartPos;
+	private bool JRCMode;
 
 	void Awake() {
 		if (instance == null) {
@@ -38,11 +39,13 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void UpdateHUD() {
-		scoreText.text = "Score: " + score.ToString();
+		if(!JRCMode) {
+			scoreText.text = "Score: " + score.ToString();
+		}
 	}
 
 	public void GameOver() {
-		if(!(scoreText.text == "  JRC: POOP")) {
+		if(!JRCMode) {
 			gameCanvas.SetActive(false);
 			endGameCanvas.SetActive(true);
 			endGameScoreText.text = "Score: " + score.ToString();
@@ -57,6 +60,7 @@ public class GameManager : MonoBehaviour {
 
 	void ResetGame() {
 		gameOver = false;
+		JRCMode = false;
 		scoreText.text = "Score: 0";
 		score = 0;
 		gameCanvas.SetActive(true);
@@ -68,6 +72,7 @@ public class GameManager : MonoBehaviour {
 
 	public void Jrc() {
 		lava.SetActive(false);
-		scoreText.text = "  JRC: POOP";
+		scoreText.text = "   JRC: POOP";
+		JRCMode = true;
 	}
 }
