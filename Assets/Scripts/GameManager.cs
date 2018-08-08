@@ -34,14 +34,14 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void UpdateScore() {
-		score += 10;
-		UpdateHUD();
+		if(!JRCMode) {
+			score += 10;
+			UpdateHUD();
+		}
 	}
 
 	void UpdateHUD() {
-		if(!JRCMode) {
-			scoreText.text = "Score: " + score.ToString();
-		}
+		scoreText.text = "Score: " + score.ToString();
 	}
 
 	public void GameOver() {
