@@ -571,8 +571,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.001
-  acceleration: 0.01
-  maxSpeed: 0.08
+  acceleration: 0.005
+  maxSpeed: 0.05
 --- !u!222 &222034034475967520
 CanvasRenderer:
   m_ObjectHideFlags: 1
