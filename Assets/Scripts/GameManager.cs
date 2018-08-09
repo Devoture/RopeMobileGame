@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
 	public static GameManager Instance { get { return instance; }}
 	public Text scoreText;
 	public Text endGameScoreText;
+	public Text highscoreText;
 	public GameObject gameCanvas;
 	public GameObject endGameCanvas;
 	public GameObject lava;
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour {
 	private bool gameOver;
 	private static GameManager instance;
 	private int score = 0;
+	private int highscore;
 	private Vector2 lavaStartPos;
 	private bool JRCMode;
 
@@ -31,6 +33,8 @@ public class GameManager : MonoBehaviour {
 
 	void Start() {	
 		gameCanvas.SetActive(true);
+		highscore = PlayerPrefs.GetInt("highscore");
+		highscoreText.text = "Highscore: " + highscore.ToString();
 	}
 
 	public void UpdateScore() {
@@ -50,6 +54,11 @@ public class GameManager : MonoBehaviour {
 			endGameCanvas.SetActive(true);
 			endGameScoreText.text = "Score: " + score.ToString();
 			gameOver = true;
+			if(score > highscore) {
+				PlayerPrefs.SetInt("highscore", score);
+				PlayerPrefs.Save();
+				highscoreText.text = "Highscore: " + score.ToString();
+			}
 		}
 	}
 
@@ -68,6 +77,7 @@ public class GameManager : MonoBehaviour {
 		lava.SetActive(true);
 		lava.transform.position = lavaStartPos;
 		lava.GetComponent<Lava>().ResetSpeed();
+		highscore = PlayerPrefs.GetInt("highscore", score);
 	}
 
 	public void Jrc() {
