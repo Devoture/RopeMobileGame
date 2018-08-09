@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject gameCanvas;
 	public GameObject endGameCanvas;
 	public GameObject lava;
+	public GameObject endGameLava;
 
 	private bool gameOver;
 	private static GameManager instance;
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour {
 	private int highscore;
 	private Vector2 lavaStartPos;
 	private bool JRCMode;
+
+	private int gameEndLavaZ = -5;
 
 	void Awake() {
 		if (instance == null) {
@@ -52,6 +55,7 @@ public class GameManager : MonoBehaviour {
 		if(!JRCMode) {
 			gameCanvas.SetActive(false);
 			endGameCanvas.SetActive(true);
+			endGameLava.SetActive(true);
 			endGameScoreText.text = "Score: " + score.ToString();
 			gameOver = true;
 			if(score > highscore) {
@@ -74,6 +78,8 @@ public class GameManager : MonoBehaviour {
 		score = 0;
 		gameCanvas.SetActive(true);
 		endGameCanvas.SetActive(false);
+		endGameLava.transform.position = new Vector3(Camera.main.transform.position.x,Camera.main.transform.position.y,gameEndLavaZ);
+		
 		lava.SetActive(true);
 		lava.transform.position = lavaStartPos;
 		lava.GetComponent<Lava>().ResetSpeed();
