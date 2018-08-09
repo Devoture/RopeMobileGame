@@ -426,6 +426,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a534e6b78aaeb4cb8476784d0155ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleTimer: 1
+  scaleTimer: 0.4
   scaleAmount: 25
   isScaling: 0
