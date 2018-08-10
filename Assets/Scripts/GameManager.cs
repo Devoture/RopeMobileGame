@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
 	public Text scoreText;
 	public Text endGameScoreText;
 	public Text highscoreText;
+	public Text gameHighscoreText;
 	public GameObject gameCanvas;
 	public GameObject endGameCanvas;
 	public GameObject lava;
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour {
 		gameCanvas.SetActive(true);
 		highscore = PlayerPrefs.GetInt("highscore", 0);
 		highscoreText.text = "Highscore: " + highscore.ToString();
+		gameHighscoreText.text = "Highscore: " + highscore.ToString();
 	}
 
 	public void UpdateScore() {

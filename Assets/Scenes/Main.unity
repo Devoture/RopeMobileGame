@@ -353,40 +353,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114753311638648210, guid: a917cb64eebc8f248aa5414ac4834c19,
-        type: 2}
-      propertyPath: endGameLava
-      value: 
-      objectReference: {fileID: 467412775}
-    - target: {fileID: 1500846014165358, guid: a917cb64eebc8f248aa5414ac4834c19, type: 2}
-      propertyPath: m_Name
-      value: GameOverLava
-      objectReference: {fileID: 0}
-    - target: {fileID: 1500846014165358, guid: a917cb64eebc8f248aa5414ac4834c19, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002451783696702, guid: a917cb64eebc8f248aa5414ac4834c19, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 224999981413859844, guid: a917cb64eebc8f248aa5414ac4834c19,
         type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1039961812733866, guid: a917cb64eebc8f248aa5414ac4834c19, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a917cb64eebc8f248aa5414ac4834c19, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &467412775 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1500846014165358, guid: a917cb64eebc8f248aa5414ac4834c19,
-    type: 2}
-  m_PrefabInternal: {fileID: 467412774}
 --- !u!1 &543113835
 GameObject:
   m_ObjectHideFlags: 0
