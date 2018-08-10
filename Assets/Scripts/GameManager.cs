@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour {
 			endGameLava.SetActive(true);
 			endGameScoreText.text = "Score: " + score.ToString();
 			gameOver = true;
+			endGameLava.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, gameEndLavaZ);
 			if(score > highscore) {
 				PlayerPrefs.SetInt("highscore", score);
 				PlayerPrefs.Save();
@@ -80,8 +81,6 @@ public class GameManager : MonoBehaviour {
 		score = 0;
 		gameCanvas.SetActive(true);
 		endGameCanvas.SetActive(false);
-		endGameLava.transform.position = new Vector3(Camera.main.transform.position.x,Camera.main.transform.position.y,gameEndLavaZ);
-		
 		lava.SetActive(true);
 		lava.transform.position = lavaStartPos;
 		lava.GetComponent<Lava>().ResetSpeed();
