@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject endGameCanvas;
 	public GameObject lava;
 	public GameObject endGameLava;
+	public AdManager am;
 
 	private bool gameOver;
 	private static GameManager instance;
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour {
 		highscore = PlayerPrefs.GetInt("highscore", 0);
 		highscoreText.text = "Highscore: " + highscore.ToString();
 		gameHighscoreText.text = "Highscore: " + highscore.ToString();
+		am = GetComponent<AdManager>();
 	}
 
 	public void UpdateScore() {
@@ -60,6 +62,7 @@ public class GameManager : MonoBehaviour {
 			endGameLava.SetActive(true);
 			endGameScoreText.text = "Score: " + score.ToString();
 			gameOver = true;
+			am.ShowAd();
 			endGameLava.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, gameEndLavaZ);
 			if(score > highscore) {
 				PlayerPrefs.SetInt("highscore", score);
